@@ -47,12 +47,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggjs/egg-joi.git"
+    "url": "git+https://github.com/liuxiaodong/egg-joi.git"
   },
   "bugs": {
-    "url": "https://github.com/eggjs/egg/issues"
+    "url": "https://github.com/liuxiaodong/egg-joi/issues"
   },
-  "homepage": "https://github.com/eggjs/egg-joi#readme",
+  "homepage": "https://github.com/liuxiaodong/egg-joi#readme",
   "author": "leaf",
   "license": "MIT"
 }
