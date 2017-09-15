@@ -1,6 +1,6 @@
 {
   "name": "egg-joi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "joi validator",
   "eggPlugin": {
     "name": "joi"
