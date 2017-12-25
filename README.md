@@ -48,7 +48,8 @@ exports.joi = {
 	options: {},
 	locale: {
 		'zh-cn': {}
-	}
+	},
+	throw: true
 };
 ```
 
@@ -83,6 +84,10 @@ see [config/config.default.js](config/config.default.js) for more detail.
 	      this.ctx.validate(app.validator.sessions.login);
 	      // this.ctx.validate(app.validator.sessions.login, this.ctx.request.body);
 	      // this.ctx.validate(app.validator.sessions.login, this.ctx.request.body, {abortEarly: false}); see [joi] https://github.com/hapijs/joi/blob/v11.0.1/API.md
+	      // let {error, value} = this.ctx.validate(app.validator.sessions.login, false);
+	      // let {error, value} = this.ctx.validate(app.validator.sessions.login, this.ctx.request.body, false);
+	      // let {error, value} = this.ctx.validate(app.validator.sessions.login, this.ctx.request.body, {abortEarly: false}, false);
+
 	      this.body = 'hello';
 	    }
 	  }
