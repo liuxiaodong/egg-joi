@@ -24,6 +24,15 @@
 Description here.
 -->
 
+## Extra
+
+Validation can get the return value, which helps automatic type conversion.
+
+```
+// The user ID is changed from a string to a number
+const user = ctx.validate(this.app.validator.user.show, { id: ctx.query.user.id });
+```
+
 ## Install
 
 ```bash
