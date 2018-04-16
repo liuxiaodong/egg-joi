@@ -1,3 +1,4 @@
+
 'use strict';
 
 module.exports = {
@@ -36,12 +37,19 @@ module.exports = {
     } else if (config.joi && typeof config.joi.throw === 'boolean') {
       _autoThrow = config.joi.throw;
     }
-    const {error, value} = this.app.Joi.validate(data, schema, Object.assign({}, (config.joi && config.joi.options), {language: languageConfig}, options));
+    let {error, value} = this.app.Joi.validate(data, schema, Object.assign({}, (config.joi && config.joi.options), {language: languageConfig}, options));
+
     if (_autoThrow && error) {
-      let message = error.details[0].message;
-      this.throw(422, message)
+      if (typeof config.joi.throwHandle === 'function') {
+        error = config.joi.throwHandle(error)
+      }
+      this.throw(422, error)
     }
 
+    if (typeof config.joi.errorHandle === 'function') {
+      error = config.joi.errorHandle(error);
+    }
+    
     return {error, value}
   }
 };

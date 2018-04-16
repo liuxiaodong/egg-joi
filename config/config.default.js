@@ -10,5 +10,11 @@ exports.joi = {
     locale: {
         'zh-cn': {}
     },
-    throw: true // 是否自动抛出错误，默认 true
+    throw: true, // 是否自动抛出错误，默认 true
+    errorHandle: (error) => { // throw === true    时错误信息统一处理函数
+        return error
+    },
+    throwHandle: (error) => { // throw === false   时错误信息统一处理函数
+        return error
+    }    
 };

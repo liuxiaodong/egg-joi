@@ -15,13 +15,14 @@ describe('test/joi.test.js', () => {
   after(() => app.close());
   afterEach(mm.restore);
 
-  it('emial is required', (done) => {
+  it('email is required', (done) => {
     app.mockCsrf();
     app.httpRequest()
       .post('/users')
       .set('Accept', 'application/json')
       .expect(422, (req, res) => {
-        assert.equal(res.body.message, '"email" is required')
+        console.log(res.body)
+        assert.equal(res.body.message, '邮件地址错误')
         return done()
       });
   });
