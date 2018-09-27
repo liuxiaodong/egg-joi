@@ -1,6 +1,6 @@
 {
   "name": "egg-joi",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "joi validator",
   "eggPlugin": {
     "name": "joi"
@@ -38,10 +38,10 @@
     "autod": "autod"
   },
   "files": [
-    "app.js",
-    "agent.js",
+    "app",
     "config",
-    "app"
+    "agent.js",
+    "app.js"
   ],
   "ci": {
     "version": "6, 8"

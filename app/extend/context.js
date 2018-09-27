@@ -5,8 +5,12 @@ module.exports = {
   /**
    * validate data with schema
    *
-   * @param  {Object} schema  - validate schema object, see [joi](https://github.com/hapijs/joi/blob/v11.0.1/API.md#validatevalue-schema-options-callback)
-   * @param  {Object} [data] - validate target, default to `this.request.body`
+   * @param  {Object}  schema     - validate schema object, see [joi](https://github.com/hapijs/joi/blob/v11.0.1/API.md#validatevalue-schema-options-callback)
+   * @param  {Object}  [data]     - validate target, default to `this.request.body`
+   * @param  {Object}  options    - Joi options
+   * @param  {Boolean} autoThrow  - 是否抛出错误
+   *
+   * @return {Object} result  - { error, value }
    */
   validate(schema, data, options, autoThrow) {
     if (!schema || !schema.isJoi) {
@@ -37,19 +41,24 @@ module.exports = {
     } else if (config.joi && typeof config.joi.throw === 'boolean') {
       _autoThrow = config.joi.throw;
     }
-    let {error, value} = this.app.Joi.validate(data, schema, Object.assign({}, (config.joi && config.joi.options), {language: languageConfig}, options));
+    let { error, value } = this.app.Joi.validate(data, schema, Object.assign({}, (config.joi && config.joi.options), { language: languageConfig }, options));
 
     if (_autoThrow && error) {
       if (typeof config.joi.throwHandle === 'function') {
-        error = config.joi.throwHandle(error)
+        error = config.joi.throwHandle(error);
       }
-      this.throw(422, error)
+      this.throw(422, error);
     }
 
-    if (typeof config.joi.errorHandle === 'function') {
+    if (error && typeof config.joi.errorHandle === 'function') {
       error = config.joi.errorHandle(error);
     }
-    
-    return {error, value}
-  }
+
+    let result = { error, value };
+
+    if (typeof config.joi.resultHandle === 'function') {
+      result = config.joi.resultHandle(result);
+    }
+    return result;
+  },
 };

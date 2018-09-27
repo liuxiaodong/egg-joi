@@ -49,7 +49,10 @@ exports.joi = {
 	locale: {
 		'zh-cn': {}
 	},
-	throw: true
+	throw: true, # 校验出错是是否自动抛出错误
+	throwHandle: (error) => { return error; }, # throw 为 true 时对抛出的错误做格式化处理
+	errorHandle: (error) => { return error; }, # throw 为 false 时错误会作为结果返回，默认 { error, value }，此函数可以对错误做格式化  
+	resultHandle: (result) => { return result; } # 对返回结果做处理的函数，默认返回结果 { error, value }
 };
 ```
 
