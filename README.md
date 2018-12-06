@@ -49,9 +49,9 @@ exports.joi = {
 	locale: {
 		'zh-cn': {}
 	},
-	throw: true, // when capture exception throw immediately
-	throwHandle: (error) => { return error; }, // when throw is true the error message format
-	errorHandle: (error) => { return error; }, // when throw is false the error message format
+	throw: true, // throw immediately when capture exception
+	throwHandle: (error) => { return error; }, // error message format when throw is true
+	errorHandle: (error) => { return error; }, // error message format when throw is false
 	resultHandle: (result) => { return result; } // fromat result
 };
 ```
