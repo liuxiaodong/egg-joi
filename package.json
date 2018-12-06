@@ -1,6 +1,6 @@
 {
   "name": "egg-joi",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "joi validator",
   "eggPlugin": {
     "name": "joi"
@@ -11,7 +11,7 @@
     "egg-plugin"
   ],
   "dependencies": {
-    "joi": "^13.1.2"
+    "joi": "^14.3.0"
   },
   "devDependencies": {
     "autod": "^2.8.0",
