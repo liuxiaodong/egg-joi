@@ -14,6 +14,7 @@
     "joi": "^14.3.0"
   },
   "devDependencies": {
+    "@types/joi": "^14.3.2",
     "autod": "^2.8.0",
     "autod-egg": "^1.0.0",
     "egg": "^1.4.0",
@@ -41,7 +42,8 @@
     "app",
     "config",
     "agent.js",
-    "app.js"
+    "app.js",
+    "index.d.ts"
   ],
   "ci": {
     "version": "6, 8"
@@ -55,5 +57,6 @@
   },
   "homepage": "https://github.com/liuxiaodong/egg-joi#readme",
   "author": "leaf",
-  "license": "MIT"
+  "license": "MIT",
+  "types": "./index.d.ts"
 }
