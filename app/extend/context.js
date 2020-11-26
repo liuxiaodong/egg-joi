@@ -13,7 +13,7 @@ module.exports = {
    * @return {Object} result  - { error, value }
    */
   validate(schema, data, options, autoThrow) {
-    if (!schema || !schema.isJoi) {
+    if (!schema || !this.app.Joi.isSchema(schema)) {
       this.throw(422, 'joi schema missing');
     }
     if (typeof data === 'boolean') {
@@ -41,7 +41,8 @@ module.exports = {
     } else if (config.joi && typeof config.joi.throw === 'boolean') {
       _autoThrow = config.joi.throw;
     }
-    let { error, value } = this.app.Joi.validate(data, schema, Object.assign({}, (config.joi && config.joi.options), { language: languageConfig }, options));
+
+    let { error, value } = schema.validate(data, Object.assign({}, (config.joi && config.joi.options), { language: languageConfig }, options));
 
     if (_autoThrow && error) {
       if (typeof config.joi.throwHandle === 'function') {

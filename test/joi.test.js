@@ -21,7 +21,6 @@ describe('test/joi.test.js', () => {
       .post('/users')
       .set('Accept', 'application/json')
       .expect(422, (req, res) => {
-        console.log(res.body);
         assert.equal(res.body.message, '邮件地址错误');
         return done();
       });
