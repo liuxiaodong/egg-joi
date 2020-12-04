@@ -46,7 +46,7 @@
     "index.d.ts"
   ],
   "ci": {
-    "version": "6, 8"
+    "version": "8, 10, 12, 13"
   },
   "repository": {
     "type": "git",
